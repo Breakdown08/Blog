@@ -15,6 +15,7 @@
 5) В терминале ввести поочередно команды: <br> **pipenv shell** <br>
 **pipenv sync** <br>
 **pipenv update**
-6) Сделать миграции в базу данных командой в терминале: **python manage.py migrate**
-7) Запустить приложение командой в терминале: **python manage.py runserver**
+6) Создать миграции командой через терминал: **python manage.py makemigrations Pages**
+7) Сделать миграции в базу данных командой в терминале: **python manage.py migrate**
+8) Запустить приложение командой в терминале: **python manage.py runserver**
 
