@@ -2,6 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <h1>Welcome {{ new_user.first_name }}!</h1>
-    <p>Your account has been successfully created. Now you can <a href="{% url "login" %}">log in</a>.</p>
+     <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <br>
+            <br>
+            <h1>{{ new_user.first_name }}, добро пожаловать!</h1>
+            <p>Ваш аккаунт успешно зарегистрирован. Теперь вы можете <a href="{% url "login" %}">авторизоваться</a>.</p>
+        </div>
+     </div>
 {% endblock %}

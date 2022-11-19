@@ -25,8 +25,6 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class CreateNewForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
-
     class Meta:
         model = New
         exclude = ('author', 'slug', 'created_at')
@@ -41,9 +39,5 @@ class CreateNewForm(forms.ModelForm):
                                                        'class': 'form-control',
                                                        'placeholder': 'Краткое описание',
                                                        'id': 'short_description'}),
-            'content': forms.Textarea(attrs={'value': '',
-                                             'type': 'text',
-                                             'class': 'form-control',
-                                             'placeholder': 'Содержимое',
-                                             'id': 'content'}),
+            'content': forms.CharField(widget=CKEditorWidget()),
         }
