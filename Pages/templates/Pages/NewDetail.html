@@ -1,0 +1,41 @@
+{% extends 'Pages/base_HomePage.html' %}
+{% load static %}
+{% load image_path %}
+
+{% block back %}
+    <a class="navbar-brand" href="{% url 'homepage_url' %}">Вернуться на главную</a>
+{% endblock %}
+
+{% block auth %}
+    <a href="{% url 'homepage_url' %}">SADASDSA</a>
+{% endblock %}
+
+
+{% block header %}
+    <header class="intro-header" style="background-image: url('/media/{{ new.image_original|path }}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ new.title }}</h1>
+                        <h2 class="subheading">{{ new.short_description }}</h2>
+                        <span class="meta">Автор: {{ new.author.username }} Дата размещения {{ new.created_at }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">{{ new.content|safe }}</div>
+            </div>
+            {% if new.author.username == user.username %}
+                <a href="{{ new.get_edit_url }}">Редактировать</a>
+            {% endif %}
+        </div>
+    </article>
+{% endblock %}

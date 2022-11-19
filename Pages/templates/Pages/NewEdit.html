@@ -1,0 +1,66 @@
+{% extends 'Pages/base_HomePage.html' %}
+{% load static %}
+
+{% block back %}
+    <a class="navbar-brand" href="{% url 'homepage_url' %}">Вернуться на главную</a>
+{% endblock %}
+
+{% if user.is_authenticated %}
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2 style="padding-top: 100px">{{ method }}</h2>
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        {{ form.media }}
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Заголовок</label>
+                                {{ form.title }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Краткое описание</label>
+                                {{ form.short_description }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <h4>Содержимое новости</h4>
+                                {{ form.content }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Изображение</label>
+                                {{ form.image_original }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <h4>Приватная новость</h4>
+                                {{ form.is_private }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-default">Сохранить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% else %}
+    <h3>Вы не авторизованы</h3>
+{% endif %}
